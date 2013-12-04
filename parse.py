@@ -4,7 +4,8 @@ import sys
 from math import fabs
 from status import dir_to_accounts
 from collections import Counter
-from data_setup import file_dir, AMOUNT_COL, SKIP_ROWS, BOOK_COL, VAL_COL, DESCR_COL, BENEF_COL
+from data_setup import (file_dir, AMOUNT_COL, SKIP_ROWS,
+                        BOOK_COL, VAL_COL, DESCR_COL, BENEF_COL)
 
 
 def skip_rows(reader, rows):
@@ -28,7 +29,7 @@ def negatives(row):
     return less_than_zero(amount)
 
 def holding(row):
-    holding_benef = 'HOLDINGSELSKABET 4-7' in row[BENEF_COL - 1]
+    holding_benef = 'HOLDINGSELSKABET AF 4-7' in row[BENEF_COL - 1]
     return negatives(row) or holding_benef
 
 def benef_descr(row, benef, descr):
